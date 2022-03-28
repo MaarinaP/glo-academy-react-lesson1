@@ -33,15 +33,15 @@ const data = {
     add: ["styled-components", "firebase"],
 };
 
-const calcCash = (own = 0) => {
-    own = own;
+function calcCash(own) {
+    own = own || 0;
     const everyCash = Array.prototype.slice.call(arguments);
     let total = own;
     for (let i = 0; i < everyCash[1].length; i++) {
         total += +everyCash[1][i];
     }
     return total;
-};
+}
 
 const lesson = calcCash(null, data.cash);
 
@@ -49,7 +49,7 @@ const makeBusiness = (director, teacher, allModule, gang, course) => {
     teacher = teacher || "Максим";
     const sumTech = data.react.concat(data.add, "и другие");
     console.log(
-        `Стартуем новый курс: ${course}. Владелец: ${director}, преподаватель: ${teacher}. Всего уроков: ${allModule}. 
+        `Стартуем новый курс: "${course}". Владелец: ${director}, преподаватель: ${teacher}. Всего уроков: ${allModule}". 
 Команда Академии: ${gang}`
     );
     console.log(`Первое что изучим будет ${data.react[0]}. Он очень похож на HTML!`);
