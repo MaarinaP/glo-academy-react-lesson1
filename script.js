@@ -33,16 +33,16 @@ const data = {
     add: ["styled-components", "firebase"],
 };
 
-function calcCash(own = 0) {
-    const everyCash = Array.prototype.slice.call(arguments);
-    let total = own;
-    for (let i = 0; i < everyCash[1].length; i++) {
-        total += +everyCash[1][i];
-    }
-    return total;
-}
+const calcCash = (own = []) => {
+    let total = 0;
+    own.forEach((num) => {
+        total += num;
+    });
 
-const lesson = calcCash(null, data.cash);
+    return total;
+};
+
+const lesson = calcCash(data.cash);
 
 const makeBusiness = (director, allModule, gang, course, teacher = "Максим") => {
     const sumTech = data.react.concat(data.add, "и другие");
@@ -52,7 +52,7 @@ const makeBusiness = (director, allModule, gang, course, teacher = "Максим
     );
     console.log(`Первое что изучим будет ${data.react[0]}. Он очень похож на HTML!`);
     console.log(`Технологии которые мы изучим: `);
-    console.log.apply(null, sumTech);
+    console.log(...sumTech);
 };
 
-makeBusiness.apply(null, ["Артем", lesson, command, nameCourse]);
+makeBusiness("Артем", lesson, command, nameCourse);
